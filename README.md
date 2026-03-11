@@ -220,6 +220,3 @@ bun test
 - `config.test.ts` creates isolated temporary directories per test and passes a fake `homeDir`, so your real `~/.claude/settings.json` never leaks into results.
 - `executor.test.ts` mocks `globalThis.fetch` for HTTP tests and passes a fake SDK client for prompt/agent tests. Command tests spawn real bash subprocesses.
 
-## License
-
-See package.json. Or don't. The hooks will fire either way.
