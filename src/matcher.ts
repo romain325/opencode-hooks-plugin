@@ -13,7 +13,7 @@ export function matchHook(matcher: string | undefined, value: string | undefined
   if (!matcher || matcher === "*") return true
 
   try {
-    const regex = new RegExp(matcher)
+    const regex = new RegExp(matcher, "i")
     return regex.test(value)
   } catch {
     // Invalid regex: treat as no match to avoid crashing

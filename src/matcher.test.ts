@@ -48,9 +48,12 @@ describe("matchHook", () => {
     expect(matchHook("Edit|Write", "Bash")).toBe(false)
   })
 
-  // 9. Case sensitivity: "bash" + "Bash" → false
-  test("regex is case-sensitive by default", () => {
-    expect(matchHook("bash", "Bash")).toBe(false)
+  // 9. Case insensitivity: "Bash" + "bash" → true (Claude Code settings use "Bash" but OpenCode passes "bash")
+  test("matching is case-insensitive", () => {
+    expect(matchHook("Bash", "bash")).toBe(true)
+    expect(matchHook("bash", "Bash")).toBe(true)
+    expect(matchHook("BASH", "bash")).toBe(true)
+    expect(matchHook("edit", "Edit")).toBe(true)
   })
 
   // 10. Partial match: "Bash" + "BashExtended" → true
